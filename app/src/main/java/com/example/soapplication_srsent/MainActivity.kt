@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-
+        //Test
         val tSeekBar2 = findViewById<SeekBar>(R.id.seekBar2)
         tSeekBar2.setOnSeekBarChangeListener(seekBarChangeListener2)
 
