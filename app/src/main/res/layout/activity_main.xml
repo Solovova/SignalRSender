@@ -84,16 +84,94 @@
             android:id="@+id/buttonServer"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+            android:text="Temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sb0Text"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="12sp"
+
+            app:layout_constraintTop_toBottomOf="@+id/buttonSend"
+            android:layout_marginTop="5dp"/>
+
     <SeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="5dp"
             android:min="10"
             android:max="50"
             android:progress="20"
 
-            app:layout_constraintTop_toBottomOf="@+id/buttonSend"
-            android:id="@+id/seekBar"/>
+            app:layout_constraintTop_toBottomOf="@+id/sb0Text"
+            android:id="@+id/seekBar0"/>
+
+    <TextView
+            android:text="Co2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sb1Text"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="12sp"
+
+            app:layout_constraintTop_toBottomOf="@+id/seekBar0"
+            android:layout_marginTop="5dp"/>
+
+    <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:min="0"
+            android:max="2000"
+            android:progress="800"
+
+            app:layout_constraintTop_toBottomOf="@+id/sb1Text"
+            android:id="@+id/seekBar1"/>
+
+    <TextView
+            android:text="Humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sb2Text"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="12sp"
+
+            app:layout_constraintTop_toBottomOf="@+id/seekBar1"
+            android:layout_marginTop="5dp"/>
+
+    <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:min="0"
+            android:max="100"
+            android:progress="50"
+
+            app:layout_constraintTop_toBottomOf="@+id/sb2Text"
+            android:id="@+id/seekBar2"/>
+
+    <TextView
+            android:text="Brightness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sb3Text"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="12sp"
+
+            app:layout_constraintTop_toBottomOf="@+id/seekBar2"
+            android:layout_marginTop="5dp"/>
+
+    <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:min="100"
+            android:max="2000"
+            android:progress="400"
+
+            app:layout_constraintTop_toBottomOf="@+id/sb3Text"
+            android:id="@+id/seekBar3"/>
 
 
 </android.support.constraint.ConstraintLayout>

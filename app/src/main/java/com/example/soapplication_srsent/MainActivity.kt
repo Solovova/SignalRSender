@@ -29,25 +29,15 @@ class MainActivity : AppCompatActivity() {
         hubConnection = HubConnectionBuilder.create("http://10.0.2.2:5000/movehub").build()
 
 
-        val seekBarChangeListener = object : SeekBar.OnSeekBarChangeListener {
+        val seekBarChangeListener0 = object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 val teValue = findViewById<EditText>(R.id.teValue)
                 teValue.text = Editable.Factory.getInstance().newEditable(progress.toString())
 
-                val hubConnection = hubConnection
-                if (hubConnection != null) {
-                    if (hubConnection.connectionState == HubConnectionState.CONNECTED) {
-                        try {
-                            val teSensorID = findViewById<EditText>(R.id.teSensorID)
-                            val teSensorIndicator = findViewById<EditText>(R.id.teSensorIndicator)
-                            val teValue = findViewById<EditText>(R.id.teValue)
-                            val mSensorID:String = teSensorID.text.toString()
-                            val mSensorIndicator:String = teSensorIndicator.text.toString()
-                            val mValue:String = teValue.text.toString()
-                            hubConnection.send("MoveViewFromServer",mSensorID,mSensorIndicator,mValue)
-                        }catch (e: Exception) {}
-                    }
-                }
+                val teSensorIndicator = findViewById<EditText>(R.id.teSensorIndicator)
+                teSensorIndicator.text = Editable.Factory.getInstance().newEditable("0")
+
+                Send()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -59,8 +49,77 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val tSeekBar = findViewById<SeekBar>(R.id.seekBar)
-        tSeekBar.setOnSeekBarChangeListener(seekBarChangeListener)
+        val tSeekBar0 = findViewById<SeekBar>(R.id.seekBar0)
+        tSeekBar0.setOnSeekBarChangeListener(seekBarChangeListener0)
+
+        val seekBarChangeListener1 = object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                val teValue = findViewById<EditText>(R.id.teValue)
+                teValue.text = Editable.Factory.getInstance().newEditable(progress.toString())
+
+                val teSensorIndicator = findViewById<EditText>(R.id.teSensorIndicator)
+                teSensorIndicator.text = Editable.Factory.getInstance().newEditable("1")
+
+                Send()
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+
+            }
+        }
+
+        val tSeekBar1 = findViewById<SeekBar>(R.id.seekBar1)
+        tSeekBar1.setOnSeekBarChangeListener(seekBarChangeListener1)
+
+        val seekBarChangeListener2 = object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                val teValue = findViewById<EditText>(R.id.teValue)
+                teValue.text = Editable.Factory.getInstance().newEditable(progress.toString())
+
+                val teSensorIndicator = findViewById<EditText>(R.id.teSensorIndicator)
+                teSensorIndicator.text = Editable.Factory.getInstance().newEditable("2")
+
+                Send()
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+
+            }
+        }
+
+        val tSeekBar2 = findViewById<SeekBar>(R.id.seekBar2)
+        tSeekBar2.setOnSeekBarChangeListener(seekBarChangeListener2)
+
+        val seekBarChangeListener3 = object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                val teValue = findViewById<EditText>(R.id.teValue)
+                teValue.text = Editable.Factory.getInstance().newEditable(progress.toString())
+
+                val teSensorIndicator = findViewById<EditText>(R.id.teSensorIndicator)
+                teSensorIndicator.text = Editable.Factory.getInstance().newEditable("3")
+
+                Send()
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+
+            }
+        }
+
+        val tSeekBar3 = findViewById<SeekBar>(R.id.seekBar3)
+        tSeekBar3.setOnSeekBarChangeListener(seekBarChangeListener3)
 
         val onClickListenerStart = View.OnClickListener {
             val hubConnection = this.hubConnection
@@ -83,23 +142,27 @@ class MainActivity : AppCompatActivity() {
 
 
         val onClickListenerSend = View.OnClickListener {
-            val hubConnection = this.hubConnection
-            if (hubConnection != null) {
-                if (hubConnection.connectionState == HubConnectionState.CONNECTED) {
-                    try {
-                        val teSensorID = findViewById<EditText>(R.id.teSensorID)
-                        val teSensorIndicator = findViewById<EditText>(R.id.teSensorIndicator)
-                        val teValue = findViewById<EditText>(R.id.teValue)
-                        val mSensorID:String = teSensorID.text.toString()
-                        val mSensorIndicator:String = teSensorIndicator.text.toString()
-                        val mValue:String = teValue.text.toString()
-                        hubConnection.send("MoveViewFromServer",mSensorID,mSensorIndicator,mValue)
-                    }catch (e: Exception) {}
-                }
-            }
+            this.Send()
         }
         btnSend?.setOnClickListener(onClickListenerSend)
 
 
+    }
+
+    fun Send() {
+        val hubConnection = this.hubConnection
+        if (hubConnection != null) {
+            if (hubConnection.connectionState == HubConnectionState.CONNECTED) {
+                try {
+                    val teSensorID = findViewById<EditText>(R.id.teSensorID)
+                    val teSensorIndicator = findViewById<EditText>(R.id.teSensorIndicator)
+                    val teValue = findViewById<EditText>(R.id.teValue)
+                    val mSensorID:String = teSensorID.text.toString()
+                    val mSensorIndicator:String = teSensorIndicator.text.toString()
+                    val mValue:String = teValue.text.toString()
+                    hubConnection.send("MoveViewFromServer",mSensorID,mSensorIndicator,mValue)
+                }catch (e: Exception) {}
+            }
+        }
     }
 }
